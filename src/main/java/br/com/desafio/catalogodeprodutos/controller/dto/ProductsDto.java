@@ -1,8 +1,8 @@
 package br.com.desafio.catalogodeprodutos.controller.dto;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
 
 import br.com.desafio.catalogodeprodutos.model.Products;
 
@@ -33,10 +33,8 @@ public class ProductsDto {
 		return price;
 	}
 
-	public static List<ProductsDto> convert(List<Products> products) {
-		return products.stream().map(ProductsDto::new).collect(Collectors.toList());
+	public static Page<ProductsDto> convert(Page<Products> products) {
+		return products.map(ProductsDto::new);
 	}
-
 	
-
 }
