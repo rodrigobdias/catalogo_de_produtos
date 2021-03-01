@@ -14,14 +14,14 @@ import br.com.desafio.catalogodeprodutos.model.Products;
 
 public class ProductsForm {
 
-	@NotNull @NotEmpty @Length(min = 1, message = "{\"name\" attribute cannot be null}")
+	@NotNull @NotEmpty @Length(min = 1)
 	private String name;
 	
-	@NotNull @NotEmpty @Length(min = 1, message = "{\"description\" attribute cannot be null}")
+	@NotNull @NotEmpty @Length(min = 1)
 	private String description;
 	
 	@DecimalMin(value = "0.0", inclusive = false)
-	@Digits(integer = 6, fraction = 2, message = "{\"price\" attribute must be positive}")
+	@Digits(integer = 6, fraction = 2)
 	private BigDecimal price;
 
 	public String getName() {
