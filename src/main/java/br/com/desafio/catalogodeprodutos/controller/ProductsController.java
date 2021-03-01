@@ -42,13 +42,13 @@ public class ProductsController {
 	@GetMapping
 	@Cacheable(value = "listProducts")
 	public Page<ProductsDto> list(@RequestParam(required = false) String name, 
-			@PageableDefault(sort = "id",  direction = Direction.DESC) Pageable paginacao) {
+			@PageableDefault(sort = "id",  direction = Direction.ASC) Pageable pagination) {
 		
 		if (name == null) {
-			Page<Products> products = productsRepository.findAll(paginacao);
+			Page<Products> products = productsRepository.findAll(pagination);
 			return ProductsDto.convert(products);
 		} else {
-			Page<Products> products = productsRepository.findByName(name, paginacao);
+			Page<Products> products = productsRepository.findByName(name, pagination);
 			return ProductsDto.convert(products);
 		}		
 	}
@@ -56,9 +56,17 @@ public class ProductsController {
 
 	
 //	@GetMapping("/search")
-//	public Page<ProductsDto> listSearch(String min_price) {
+//	@Cacheable(value = "listProducts")
+//	public Page<ProductsDto> listSearch(@RequestParam(required = false) String q,
+//			                            @RequestParam(required = false) String min_price,
+//			                            @RequestParam(required = false) String max_price) {
 //		
-//		if(min_price == null) {
+//		String nameOrDescription=requestParams.get("q");
+//		String min_price=requestParams.get("min_price");
+//		String max_price=requestParams.get("max_price");
+//		
+//		allParams.entrySet();
+//		if(q == null) {
 //			
 //		}
 //		Page<Products> products = productsRepository.findAll(paginacao);

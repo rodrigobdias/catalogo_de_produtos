@@ -9,4 +9,5 @@ import br.com.desafio.catalogodeprodutos.model.Products;
 public interface ProductsRepository extends JpaRepository<Products, Long>{
 
 	Page<Products> findByName(String name, Pageable paginacao);
+	
 }
