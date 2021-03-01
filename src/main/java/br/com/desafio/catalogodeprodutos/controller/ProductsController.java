@@ -1,6 +1,5 @@
 package br.com.desafio.catalogodeprodutos.controller;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.util.Optional;
 
