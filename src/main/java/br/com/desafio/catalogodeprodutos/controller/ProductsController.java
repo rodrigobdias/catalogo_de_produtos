@@ -72,7 +72,7 @@ public class ProductsController {
 	@PostMapping
 	@Transactional
 	@CacheEvict(value = "listProducts", allEntries = true)
-	public ResponseEntity<ProductsDto> cadastrar(@RequestBody @Valid ProductsForm productsForm, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<ProductsDto> register(@RequestBody @Valid ProductsForm productsForm, UriComponentsBuilder uriBuilder) {
 		
 		Products products = productsForm.convert();
 		productsRepository.save(products);
