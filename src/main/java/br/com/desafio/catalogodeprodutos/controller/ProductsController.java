@@ -55,17 +55,17 @@ public class ProductsController {
 	
 
 	
-//	@GetMapping("/search")
-//	@Cacheable(value = "listProducts")
-//	public Page<ProductsDto> listSearch(@RequestParam(required = false) String q,
-//			                            @RequestParam(required = false) BigDecimal min_price,
-//			                            @RequestParam(required = false) BigDecimal max_price) {
-//		
-//		Page<Products> products = productsRepository.findAll(???);
-//
-//		return ProductsDto.convert(products);
-//		
-//	}	
+	@GetMapping("/search")
+	@Cacheable(value = "listProducts")
+	public Page<ProductsDto> findProducts(@RequestParam(required = false) String q,
+			                            @RequestParam(required = false) BigDecimal min_price,
+			                            @RequestParam(required = false) BigDecimal max_price) {
+		
+		Page<Products> products = productsRepository.findAll(???);
+
+		return ProductsDto.convert(products);
+		
+	}	
 	
 	
 	@PostMapping
