@@ -12,6 +12,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +32,11 @@ import br.com.desafio.catalogodeprodutos.controller.form.ProductsForm;
 import br.com.desafio.catalogodeprodutos.controller.form.UpdateProductsForm;
 import br.com.desafio.catalogodeprodutos.model.Products;
 import br.com.desafio.catalogodeprodutos.repository.ProductsRepository;
+import net.kaczmarzyk.spring.data.jpa.domain.Equal;
+import net.kaczmarzyk.spring.data.jpa.domain.GreaterThanOrEqual;
+import net.kaczmarzyk.spring.data.jpa.domain.LessThanOrEqual;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 
 @RestController
 @RequestMapping("/products")
@@ -59,10 +65,15 @@ public class ProductsController {
 //	@Cacheable(value = "listProducts")
 //	public Page<ProductsDto> findProducts(
 //			@And({
-//			})) {
+//				@Spec(path = "name", params = {"q"}, spec = Equal.class),
+//				@Spec(path = "description", params = {"q"}, spec = Equal.class),
+//				@Spec(path = "price", params = "min_price", spec = GreaterThanOrEqual.class),
+//				@Spec(path = "price", params = "max_price", spec = LessThanOrEqual.class)
+//			}) Specification<Products> productsSpec,
+//			Pageable pagination) {
 //		
-////		Page<Products> products = productsRepository.findAll(???);
-//
+//		Page<Products> products = productsRepository.findAll(productsSpec, pagination);
+//		
 //		return ProductsDto.convert(products);
 //		
 //	}	
