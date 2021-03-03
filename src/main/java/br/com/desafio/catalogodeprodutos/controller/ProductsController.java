@@ -61,22 +61,22 @@ public class ProductsController {
 	
 
 	
-//	@GetMapping("/search")
-//	@Cacheable(value = "listProducts")
-//	public Page<ProductsDto> findProducts(
-//			@And({
-//				@Spec(path = "name", params = {"q"}, spec = Equal.class),
-//				@Spec(path = "description", params = {"q"}, spec = Equal.class),
-//				@Spec(path = "price", params = "min_price", spec = GreaterThanOrEqual.class),
-//				@Spec(path = "price", params = "max_price", spec = LessThanOrEqual.class)
-//			}) Specification<Products> productsSpec,
-//			Pageable pagination) {
-//		
-//		Page<Products> products = productsRepository.findAll(productsSpec, pagination);
-//		
-//		return ProductsDto.convert(products);
-//		
-//	}	
+	@GetMapping("/search")
+	@Cacheable(value = "listProducts")
+	public Page<ProductsDto> findProducts(
+			@And({
+				@Spec(path = "name", params = {"q"}, spec = Equal.class),
+				@Spec(path = "description", params = {"q"}, spec = Equal.class),
+				@Spec(path = "price", params = "min_price", spec = GreaterThanOrEqual.class),
+				@Spec(path = "price", params = "max_price", spec = LessThanOrEqual.class)
+			}) Specification<Products> productsSpec,
+			Pageable pagination) {
+		
+		Page<Products> products = productsRepository.findAll(productsSpec, pagination);
+		
+		return ProductsDto.convert(products);
+		
+	}	
 	
 	
 	@PostMapping
