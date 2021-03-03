@@ -66,7 +66,7 @@ public class ProductsController {
 	public Page<ProductsDto> findProducts(
 			@And({
 				@Spec(path = "name", params = {"q"}, spec = Equal.class),
-				@Spec(path = "description", params = {"q"}, spec = Equal.class),
+//				@Spec(path = "description", params = {"q"}, spec = Equal.class),
 				@Spec(path = "price", params = "min_price", spec = GreaterThanOrEqual.class),
 				@Spec(path = "price", params = "max_price", spec = LessThanOrEqual.class)
 			}) Specification<Products> productsSpec,
