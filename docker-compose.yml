@@ -1,0 +1,11 @@
+version: '3.3'
+    
+services:
+
+  catalogodeprodutos:
+    build: .
+    container_name: catalogodeprodutos 
+    ports:
+      - '8085:8095'
+
+
