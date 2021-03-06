@@ -1,5 +1,6 @@
 package br.com.desafio.catalogodeprodutos.controller;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.Optional;
 
@@ -55,22 +56,18 @@ public class ProductsController {
 	
 
 	
-//	@GetMapping("/search")
-//	@Cacheable(value = "listProducts")
-//	public Page<ProductsDto> findProducts(
-//			@And({
-//				@Spec(path = "name", params = {"q"}, spec = Equal.class),
-////				@Spec(path = "description", params = {"q"}, spec = Equal.class),
-//				@Spec(path = "price", params = "min_price", spec = GreaterThanOrEqual.class),
-//				@Spec(path = "price", params = "max_price", spec = LessThanOrEqual.class)
-//			}) Specification<Products> productsSpec,
-//			Pageable pagination) {
-//		
-//		Page<Products> products = productsRepository.findAll(productsSpec, pagination);
-//		
-//		return ProductsDto.convert(products);
-//		
-//	}	
+	@GetMapping("/search")
+	@Cacheable(value = "listProducts")
+	public Page<ProductsDto> findProducts(@RequestParam(required = false) String q,
+			@RequestParam(required = false) BigDecimal min_price,
+			@RequestParam(required = false) BigDecimal max_price,
+			@PageableDefault() Pageable pagination) {
+		
+		Page<Products> products = productsRepository.findProductsByNameAndDescriptionAndPrice(q, min_price, max_price, pagination);
+		
+		return ProductsDto.convert(products);
+		
+	}	
 	
 	
 	@PostMapping
