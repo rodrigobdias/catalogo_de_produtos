@@ -42,14 +42,16 @@ public class ProductsController {
 	
 	@GetMapping
 	@Cacheable(value = "listProducts")
-	public Page<ProductsDto> list(@RequestParam(required = false) String name, 
+	public Page<ProductsDto> list(@RequestParam(required = false) String name,
+			@RequestParam(required = false) String description,
+			@RequestParam(required = false) BigDecimal price,
 			@PageableDefault(sort = "id",  direction = Direction.ASC) Pageable pagination) {
 		
-		if (name == null) {
+		if (name == null && description == null && price == null) {
 			Page<Products> products = productsRepository.findAll(pagination);
 			return ProductsDto.convert(products);
 		} else {
-			Page<Products> products = productsRepository.findByName(name, pagination);
+			Page<Products> products = productsRepository.findProductsByNameOrDescriptionOrPrice(name, description, price, pagination);
 			return ProductsDto.convert(products);
 		}		
 	}
