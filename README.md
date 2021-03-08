@@ -106,4 +106,4 @@ http://0.0.0.0:8095/swagger-ui.html
 ![Screenshot](screenshot-1.png)
 
 Observações:
-Faltou a validação dos endpoints através de script automatizado;
+Sará feito a validação dos endpoints através de script automatizado;
