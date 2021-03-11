@@ -99,7 +99,7 @@ Existe a possibilidade de subir o projeto via Docker, para isso basta executar o
 docker-compose up --build
 ```
 
-Para acessar e testar os endpoints, foi utilizado a ferramenta o “Postman”.
+Para acessar e validar os endpoints, foi utilizado a ferramenta “Postman”.
 
 ![Screenshot](postman-1.png)
 
