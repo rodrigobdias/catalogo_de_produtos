@@ -14,10 +14,14 @@ import br.com.desafio.catalogodeprodutos.model.Products;
 
 public class ProductsForm {
 
-	@NotNull @NotEmpty @Length(min = 1)
+	@NotNull 
+	@NotEmpty 
+	@Length(min = 1)
 	private String name;
 	
-	@NotNull @NotEmpty @Length(min = 1)
+	@NotNull 
+	@NotEmpty 
+	@Length(min = 3)
 	private String description;
 	
 	@DecimalMin(value = "0.0", inclusive = false)

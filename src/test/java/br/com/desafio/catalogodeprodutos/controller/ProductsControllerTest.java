@@ -25,7 +25,6 @@ public class ProductsControllerTest {
 	
 	@Test
 	public void deveriaDevolver201CasoOsDadosDeCadastroDoProdutoEstejamCorretos() throws Exception {
-		System.out.println("TESTE ****** ");
 		URI uri = new URI("/products");
 		String json = "{\"name\":\"produto 1A\",\"description\":\"descrição do produto 1A\",\"price\":12.98 }";
 		
@@ -38,5 +37,67 @@ public class ProductsControllerTest {
 				.status()
 				.is(201));
 	}
+	
+	@Test
+	public void deveriaDevolver400ParaOCasoDoCadastroDoProdutoComPrecoInvalido() throws Exception {
+		URI uri = new URI("/products");
+		String json = "{\"name\":\"produto 1A\",\"description\":\"descrição do produto 1A\",\"price\":-12.98 }";
+		
+		mockMvc
+		.perform(MockMvcRequestBuilders
+				.post(uri)
+				.content(json)
+				.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers
+				.status()
+				.is(400));
+	}
+	
+	@Test
+	public void deveriaDevolver400ParaOCasoDoCadastroDoProdutoComNameInvalido() throws Exception {
+		URI uri = new URI("/products");
+		String json = "{\"name\":\"\",\"description\":\"descrição do produto 1A\",\"price\":12.98 }";
+		
+		mockMvc
+		.perform(MockMvcRequestBuilders
+				.post(uri)
+				.content(json)
+				.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers
+				.status()
+				.is(400));
+	}	
 
+	@Test
+	public void deveriaDevolver400ParaOCasoDoCadastroDoProdutoComDescriptionInvalido() throws Exception {
+		URI uri = new URI("/products");
+		String json = "{\"name\":\"produto 1A\",\"\":85.6,\"price\":12.98 }";
+		
+		mockMvc
+		.perform(MockMvcRequestBuilders
+				.post(uri)
+				.content(json)
+				.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers
+				.status()
+				.is(400));
+	}	
+	
+	
+	@Test
+	public void deveriaAtualizarUmProdutoBaseadoNoIDEDevolver200() throws Exception {
+		URI uri = new URI("/products/1");
+		String json = "{\"name\":\"produto 1A\",\"description\":\"descrição do produto 1A\",\"price\":2.98 }";
+		
+		mockMvc
+		.perform(MockMvcRequestBuilders
+				.put(uri)
+				.content(json)
+				.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers
+				.status()
+				.is(200));
+	}	
+	
+	
 }
