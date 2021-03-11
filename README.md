@@ -77,27 +77,31 @@ Esse endpoint deleta um registro de produto na base de dados. Caso encontre o pr
 
 **Instruções**
 
-A API Rest foi desenvolvido com a versão 11 do java.
+A API Rest foi desenvolvida usando Spring Boot com a versão 11 do java.
 
-O projeto está configurada para ser acessado na porta 8095, ela pode ser alterada.
+Para persistência dos dados, foi utilizado um banco de dados em memória (h2).
 
-Foi usado o banco de dados em memória (h2).
-
-Para subir o aplicativo, basta executar o seguinte comando no terminalo, ou subir pela IDE se desejar:
+Para subir o projeto, basta executar o seguinte comando no terminal, ou subir pela IDE se desejar:
 
 ```shell
 java -Dspring.profiles.active=prod -jar target/catalogodeprodutos-0.0.1-SNAPSHOT.jar
 ```
 
-Também é possivel subir o projeto via Docker, para isso basta executar o seguinte comando no terminal:
+O projeto está configurada para ser acessado na porta 9999, no endereço:
+
+```shell
+http://0.0.0.0:9999/products
+```
+
+Existe a possibilidade de subir o projeto via Docker, para isso basta executar o seguinte comando no terminal:
 
 ```shell
 docker-compose up --build
 ```
 
-Para testar os endpoint, foi utilizado a ferramenta o “Postman”.
+Para acessar e testar os endpoint, foi utilizado a ferramenta o “Postman”.
 
-A Documentação da API pode ser acessada via Swagger, no endereço:
+A Documentação da API também pode ser acessada via Swagger, no endereço:
 
 ```shell
 http://0.0.0.0:8095/swagger-ui.html
@@ -105,5 +109,7 @@ http://0.0.0.0:8095/swagger-ui.html
 
 ![Screenshot](screenshot-1.png)
 
-Observações:
-Sará feito a validação dos endpoints através de script automatizado;
+Foram realizados testes automatizados dos endpoints usando Spring Boot, ela esta localizada no arquivo `ProductsControllerTest.java`:
+
+![Screenshot](automated-testing-1.png)
+
