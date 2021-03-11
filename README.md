@@ -99,12 +99,14 @@ Existe a possibilidade de subir o projeto via Docker, para isso basta executar o
 docker-compose up --build
 ```
 
-Para acessar e testar os endpoint, foi utilizado a ferramenta o “Postman”.
+Para acessar e testar os endpoints, foi utilizado a ferramenta o “Postman”.
+
+![Screenshot](postman-1.png)
 
 A Documentação da API também pode ser acessada via Swagger, no endereço:
 
 ```shell
-http://0.0.0.0:8095/swagger-ui.html
+http://0.0.0.0:9999/swagger-ui.html
 ```
 
 ![Screenshot](screenshot-1.png)
