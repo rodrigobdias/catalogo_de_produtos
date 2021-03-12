@@ -5,17 +5,16 @@ import java.math.BigDecimal;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
-
-import com.sun.istack.NotNull;
 
 import br.com.desafio.catalogodeprodutos.model.Products;
 import br.com.desafio.catalogodeprodutos.repository.ProductsRepository;
 
 public class UpdateProductsForm {
 
-	@NotNull 
+	@NotNull
 	@NotEmpty 
 	@Length(min = 1)
 	private String name;
@@ -27,6 +26,7 @@ public class UpdateProductsForm {
 	
 	@DecimalMin(value = "0.0", inclusive = false)
 	@Digits(integer = 6, fraction = 2)
+	@NotNull
 	private BigDecimal price;
 
 	public String getName() {
