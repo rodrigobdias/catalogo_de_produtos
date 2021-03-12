@@ -94,6 +94,7 @@ http://0.0.0.0:9999/products
 ```
 
 Existe a possibilidade de subir o projeto via Docker, para isso basta executar o seguinte comando no terminal:
+Obs: É recomendável que a versão mínima instalada do docker-compose e docker sejam respectivamente: docker-compose versão 1.21.0 e docker versão 20.10.4
 
 ```shell
 docker-compose up --build
