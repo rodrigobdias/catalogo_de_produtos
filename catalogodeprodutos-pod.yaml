@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: catalogodeprodutos
+  labels:
+    app: catalogodeprodutos-pod
+spec:
+  containers:
+    - name:  catalogodeprodutos-pod-1
+      image: catalogodeprodutos_catalogodeprodutos
+      ports:
+        - containerPort: 9999
