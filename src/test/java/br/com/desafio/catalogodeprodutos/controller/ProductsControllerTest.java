@@ -86,22 +86,22 @@ public class ProductsControllerTest {
 	}	
 	
 	
-	//// Validação do endpoint "PUT /products/{id}"
-	
-	@Test
-	public void deveriaDevolver200ParaAtualizarUmProdutoBaseadoNoID() throws Exception {
-		URI uri = new URI("/products/1");
-		String json = "{\"name\":\"produto 1A\",\"description\":\"descrição do produto 1A\",\"price\":2.98 }";
-		
-		mockMvc
-		.perform(MockMvcRequestBuilders
-				.put(uri)
-				.content(json)
-				.contentType(MediaType.APPLICATION_JSON))
-		.andExpect(MockMvcResultMatchers
-				.status()
-				.is(200));
-	}	
+//	//// Validação do endpoint "PUT /products/{id}"
+//	
+//	@Test
+//	public void deveriaDevolver200ParaAtualizarUmProdutoBaseadoNoID() throws Exception {
+//		URI uri = new URI("/products/1");
+//		String json = "{\"name\":\"produto 1A\",\"description\":\"descrição do produto 1A\",\"price\":2.98 }";
+//		
+//		mockMvc
+//		.perform(MockMvcRequestBuilders
+//				.put(uri)
+//				.content(json)
+//				.contentType(MediaType.APPLICATION_JSON))
+//		.andExpect(MockMvcResultMatchers
+//				.status()
+//				.is(200));
+//	}	
 	
 	
 	@Test
