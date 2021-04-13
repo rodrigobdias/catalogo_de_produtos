@@ -9,4 +9,4 @@ spec:
       targetPort: 9999
       nodePort: 30000
   selector:
-    app: catalogo-de-produtos-pod
+    app: pod-catalogodeprodutos
