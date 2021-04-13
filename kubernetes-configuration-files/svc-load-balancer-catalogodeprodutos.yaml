@@ -5,8 +5,8 @@ metadata:
 spec:
   type:  LoadBalancer
   selector:
-    app: catalogo-de-produtos-pod
+    app: pod-catalogodeprodutos
   ports:
     - port: 9000
       targetPort: 9999
-      nodePort: 30000
+      nodePort: 30001

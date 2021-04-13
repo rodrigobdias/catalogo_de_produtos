@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: db-catalogo-de-produtos
+  name: db-catalogodeprodutos
   labels:
-    app: db-catalogo-de-produtos
+    app: db-catalogodeprodutos
 spec:
   containers:
-    - name: db-catalogo-de-produtos
+    - name: db-catalogodeprodutos
       image: mysql:5.7
       ports:
         - containerPort: 3306
