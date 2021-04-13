@@ -5,7 +5,7 @@ metadata:
 spec:
   type:  ClusterIP
   selector:
-    app: catalogo-de-produtos-pod
+    app: pod-catalogodeprodutos
   ports:
     - port: 9000
       targetPort: 9999

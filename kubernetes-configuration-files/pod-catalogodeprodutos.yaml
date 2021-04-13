@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: catalogo-de-produtos-pod
+  name: pod-catalogodeprodutos
   labels:
-    app: catalogo-de-produtos-pod
+    app: pod-catalogodeprodutos
 spec:
   containers:
-    - name:  catalogo-de-produtos
+    - name:  catalogodeprodutos
       image: forketyfork/catalogodeprodutos
       imagePullPolicy: Never
       ports:
