@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-catalogodeprodutos
+spec:
+  template:
+    metadata:
+      name: pod-catalogodeprodutos
+      labels:
+        app: pod-catalogodeprodutos
+    spec:
+      containers:
+        - name:  catalogodeprodutos
+          image: forketyfork/catalogodeprodutos
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9999
+          envFrom:
+            - configMapRef:
+                name: db-configmap
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-catalogodeprodutos
