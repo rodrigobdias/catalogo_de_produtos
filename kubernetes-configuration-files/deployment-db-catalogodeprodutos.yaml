@@ -10,7 +10,7 @@ spec:
         app: db-catalogodeprodutos
     spec:
       containers:
-        - name:  db-catalogodeprodutos
+        - name:  db-catalogodeprodutos-container
           image: mysql:5.7
           ports:
             - containerPort: 3306

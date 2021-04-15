@@ -10,7 +10,7 @@ spec:
         app: pod-catalogodeprodutos
     spec:
       containers:
-        - name:  catalogodeprodutos-containers
+        - name:  catalogodeprodutos-container
           image: forketyfork/catalogodeprodutos
           imagePullPolicy: Never
           ports:
