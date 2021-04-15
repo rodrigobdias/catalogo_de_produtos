@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-db-catalogodeprodutos
+spec:
+  template:
+    metadata:
+      name: db-catalogodeprodutos
+      labels:
+        app: db-catalogodeprodutos
+    spec:
+      containers:
+        - name:  db-catalogodeprodutos
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: db-configmap
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-catalogodeprodutos
