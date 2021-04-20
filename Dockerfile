@@ -11,7 +11,7 @@ ARG JAR_FILE=target/*.jar
 
 COPY ${JAR_FILE} ~/app.jar
 
-ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","~/app.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=mysql","-jar","~/app.jar"]
 
 # ENTRYPOINT ["java","-Xmx512m","-Dserver.port=${PORT}","-jar","~/app.jar"]
 
