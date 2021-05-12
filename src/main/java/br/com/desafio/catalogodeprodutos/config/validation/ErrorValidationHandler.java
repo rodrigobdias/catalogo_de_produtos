@@ -1,5 +1,6 @@
 package br.com.desafio.catalogodeprodutos.config.validation;
 
+import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,4 +38,11 @@ public class ErrorValidationHandler {
 		
 		return dto;
 	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ConnectException.class)
+	public void handle(ConnectException exception) {
+		
+		System.out.println("Erro conexão com o banco ");
+	}	
 }

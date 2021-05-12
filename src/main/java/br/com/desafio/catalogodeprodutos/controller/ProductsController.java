@@ -1,6 +1,7 @@
 package br.com.desafio.catalogodeprodutos.controller;
 
 import java.math.BigDecimal;
+import java.net.ConnectException;
 import java.net.URI;
 import java.util.Optional;
 
@@ -78,6 +79,7 @@ public class ProductsController {
 	public ResponseEntity<ProductsDto> register(@RequestBody @Valid ProductsForm productsForm, UriComponentsBuilder uriBuilder) {
 		
 		Products products = productsForm.convert();
+
 		productsRepository.save(products);
 		
 		URI uri = uriBuilder.path("/products/{id}").buildAndExpand(products.getId()).toUri();
