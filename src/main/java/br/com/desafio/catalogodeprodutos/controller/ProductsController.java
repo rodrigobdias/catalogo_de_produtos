@@ -1,9 +1,9 @@
 package br.com.desafio.catalogodeprodutos.controller;
 
 import java.math.BigDecimal;
-import java.net.ConnectException;
 import java.net.URI;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -16,12 +16,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +45,16 @@ public class ProductsController {
 	
 	@GetMapping
 	@Cacheable(value = "listProducts")
-	public Page<ProductsDto> list(@RequestParam(required = false) String name,
+	public Page<ProductsDto> list(@RequestHeader MultiValueMap<String, String> headers, @RequestParam(required = false) String name,
 			@RequestParam(required = false) String description,
 			@RequestParam(required = false) BigDecimal price,
 			@PageableDefault(sort = "id",  direction = Direction.ASC) Pageable pagination) {
+				
+		headers.forEach((key, value) -> {
+			System.out.println("Header: key = " + key + " value = " + value.stream().collect(Collectors.joining("|")) );
+	    });
+		
+		System.out.println("Header size = " + headers.size());
 		
 		if (name == null && description == null && price == null) {
 			Page<Products> products = productsRepository.findAll(pagination);
